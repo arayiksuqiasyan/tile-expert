@@ -1,0 +1,116 @@
+@use 'adaptive' as *;
+@use 'mixins' as *;
+
+:host {
+  display: none;
+
+  @include breakpoint-down {
+    display: block;
+  }
+}
+
+.sidebar {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  position: fixed;
+  height: 100dvh;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.3s ease, visibility 0.3s ease;
+
+  &--open {
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    .sidebar__panel {
+      transform: translateX(0);
+    }
+  }
+}
+
+.sidebar__panel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  background-color: var(--input-bgc);
+}
+
+.sidebar__header {
+  gap: 20px;
+  height: 56px;
+  display: flex;
+  flex-shrink: 0;
+  padding: 0 20px;
+  align-items: center;
+
+  app-input {
+    --border: none;
+    border-radius: 9999px;
+    --bg: var(--sidebar-input-bgc);
+  }
+}
+
+.sidebar__back {
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border: none;
+  display: flex;
+  flex-shrink: 0;
+  cursor: pointer;
+  background: none;
+  align-items: center;
+  justify-content: center;
+  @include mobileTapColorNone;
+}
+
+.sidebar__back-icon {
+  width: 16px;
+  height: 16px;
+  fill: var(--sidebar-icon-c);
+}
+
+.sidebar__content {
+  gap: 16px;
+  display: flex;
+  padding: 16px;
+  overflow-y: auto;
+  @include scrollHidden;
+  flex-direction: column;
+}
+
+.sidebar__author-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  display: flex;
+  font-size: 14px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  @include mobileTapColorNone;
+  color: var(--dropdown-options-c);
+  background-color: rgba(0, 0, 0, 0.06);
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.sidebar__checkboxes {
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar__title {
+  font-size: 12px;
+  color: var(--dropdown-title-c);
+}

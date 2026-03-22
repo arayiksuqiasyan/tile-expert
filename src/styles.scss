@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'adaptive' as *;
+@use 'mixins' as *;
+
+:root {
+  --header-bgc: #1074CC;
+  --header-logo-c: #FFFFFF;
+  --header-txt-c: #FFFFFF;
+  --input-bgc: #FFFFFF;
+  --notification-badge-bgc: #CC1910;
+  --input-placeholder-c: #9AA1A6;
+  --dropdown-title-c: #7F878C;
+  --dropdown-options-c: #2A3033;
+  --checkbox-txt-c: #2A3033;
+  --checkbox-brc: #7F878C;
+  --sidebar-icon-c: #2A3033;
+  --sidebar-input-bgc: #F5F5F5;
+  --round-checkbox-bg: #F5F5F5;
+  --round-checkbox-icon-c: #7F878C;
+  --round-checkbox-active-icon-c: #1074CC;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}

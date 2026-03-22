@@ -1,0 +1,65 @@
+<app-sidebar #sidebar/>
+
+<button class="header__burger" type="button" (click)="toggleSidebar()">
+  <svg class="header__burger-icon">
+    <use href="svg/global-sprite.svg#app-menu"></use>
+  </svg>
+</button>
+
+<a class="header__logo" href="/">
+  <img src="/images/logo.png" alt="TILE.EXPERT"/>
+</a>
+
+<nav class="header__nav">
+  <div class="header__nav-left">
+    @for (item of navItems(); track item.N) {
+      <a class="header__nav-link" [href]="item.H">
+        <svg class="header__nav-icon">
+          <use [attr.href]="'svg/global-sprite.svg#' + item.S"></use>
+        </svg>
+        <span>{{ item.N }}</span>
+      </a>
+    }
+
+    <app-header-search class="header__nav-search"/>
+  </div>
+
+  <button class="header__nav-btn" type="button">
+    <svg class="header__nav-icon">
+      <use href="svg/global-sprite.svg#app-plus"></use>
+    </svg>
+  </button>
+</nav>
+
+<div class="header__actions">
+  <button class="header__action-btn header__action-btn--mobile" type="button">
+    <svg class="header__action-icon header__action-icon--plus">
+      <use href="svg/global-sprite.svg#app-plus"></use>
+    </svg>
+  </button>
+
+  <button class="header__action-btn header__action-btn--mobile" type="button">
+    <svg class="header__action-icon">
+      <use href="svg/global-sprite.svg#app-clock"></use>
+    </svg>
+  </button>
+
+  <button class="header__action-btn header__action-btn--mobile" type="button">
+    <svg class="header__action-icon">
+      <use href="svg/global-sprite.svg#app-search"></use>
+    </svg>
+  </button>
+
+  <button class="header__action-btn header__action-btn--notification" type="button">
+    <svg class="header__action-icon">
+      <use href="svg/global-sprite.svg#app-notification"></use>
+    </svg>
+    @if (notificationCount() > 0) {
+      <span class="header__badge">{{ notificationCount() }}</span>
+    }
+  </button>
+
+  <button class="header__action-btn header__action-btn--desktop" type="button">
+    <div class="header__avatar"></div>
+  </button>
+</div>

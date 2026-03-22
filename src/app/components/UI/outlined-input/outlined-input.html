@@ -1,0 +1,12 @@
+<fieldset class="outlined-input">
+  <legend class="outlined-input__legend">{{ label() }}</legend>
+  <div class="outlined-input__row">
+    <app-input
+      [placeholder]="placeholder()"
+      [ngModel]="value()"
+      (ngModelChange)="onValueChange($event)"
+      [disabled]="disabled()"
+    />
+    <ng-content/>
+  </div>
+</fieldset>

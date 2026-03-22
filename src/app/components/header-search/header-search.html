@@ -1,0 +1,49 @@
+<div class="header-search">
+  <button class="header-search__btn" type="button" (click)="toggle()">
+    <svg class="header-search__icon">
+      <use href="svg/global-sprite.svg#app-search"></use>
+    </svg>
+  </button>
+
+  <div class="header-search__input-wrapper" [class.header-search__input-wrapper--open]="isOpen()">
+    <app-input
+      #searchInput
+      placeholder="Поисковый запрос"
+      [(ngModel)]="searchValue"
+      (focused)="onInputFocused($event)"
+    />
+  </div>
+
+  @if (isDropdownOpen()) {
+    <div class="header-search__dropdown">
+      <div class="header-search__dropdown-left">
+        <span class="header-search__dropdown-title">История</span>
+        <div class="header-search__history">
+          @for (item of historyItems(); track item.I) {
+            <button class="header-search__history-item" type="button">{{ item.N }}</button>
+          }
+        </div>
+      </div>
+
+      <div class="header-search__dropdown-right">
+        <app-outlined-input label="Автор" placeholder="Имя или должность" [(ngModel)]="authorValue">
+          <button class="header-search__author-btn" type="button">Я</button>
+        </app-outlined-input>
+
+        <div class="header-search__checkboxes">
+          <app-checkbox [(ngModel)]="isParticipant">Я участник</app-checkbox>
+          <app-checkbox [(ngModel)]="strictSearch">Строгий поиск</app-checkbox>
+          <app-checkbox [(ngModel)]="inHeaders">В заголовках</app-checkbox>
+        </div>
+
+        <span class="header-search__dropdown-title">Только</span>
+
+        <div class="header-search__checkboxes">
+          <app-checkbox [(ngModel)]="onlyTags">Теги</app-checkbox>
+          <app-checkbox [(ngModel)]="onlyRequests">Просьбы</app-checkbox>
+          <app-checkbox [(ngModel)]="onlyContacts">Контакты</app-checkbox>
+        </div>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,42 @@
+@use "sass:map";
+
+$grid: (
+  s: (
+    to: 414,
+    from: 415,
+  ),
+  sm: (
+    to:640,
+    from: 641,
+  ),
+  m: (
+    to:800,
+    from: 801,
+  ),
+  l: (
+    to: 1440,
+    from: 1441,
+  ),
+  xs: (
+    to: 1920,
+    from: 1921,
+  ),
+);
+
+
+@mixin breakpoint-up($width: map.get(map.get($grid, "m"), "from")) {
+  @media (min-width: #{$width}px) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($width: map.get(map.get($grid, "m"), "to")) {
+  @media (max-width: #{$width}px) {
+    @content;
+  }
+}
+
+@function clamped($min-var, $max-var, $min-vw: 375, $max-vw: 1440) {
+  $range: $max-vw - $min-vw;
+  @return unquote("clamp(calc(#{$min-var} * 1px), calc((#{$min-var} + (#{$max-var} - #{$min-var}) * (100vw - #{$min-vw}px) / #{$range}px) * 1px), calc(#{$max-var} * 1px))");
+}

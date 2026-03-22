@@ -1,0 +1,47 @@
+@use 'mixins' as *;
+
+:host {
+  display: inline-block;
+}
+
+.checkbox {
+  gap: 8px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  @include userSelectNone;
+  @include mobileTapColorNone;
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.checkbox__box {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  flex-shrink: 0;
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--checkbox-brc);
+  transition: background-color 0.2s, border-color 0.2s;
+
+  .checkbox--checked & {
+    border-color: var(--header-bgc);
+    background-color: var(--header-bgc);
+  }
+}
+
+.checkbox__icon {
+  color: #fff;
+  width: 12px;
+  height: 10px;
+}
+
+.checkbox__label {
+  font-size: 14px;
+  color: var(--checkbox-txt-c);
+}

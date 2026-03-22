@@ -1,0 +1,32 @@
+<div class="sidebar" [class.sidebar--open]="isOpen()" (click)="close()">
+  <div class="sidebar__panel" (click)="$event.stopPropagation()">
+    <div class="sidebar__header">
+      <button class="sidebar__back" type="button" (click)="close()">
+        <svg class="sidebar__back-icon">
+          <use href="svg/global-sprite.svg#app-arrow-left"></use>
+        </svg>
+      </button>
+      <app-input placeholder="Поиск" [(ngModel)]="searchValue"/>
+    </div>
+
+    <div class="sidebar__content">
+      <app-outlined-input label="Автор" placeholder="Имя или должность" [(ngModel)]="authorValue">
+        <button class="sidebar__author-btn" type="button">Я</button>
+      </app-outlined-input>
+
+      <div class="sidebar__checkboxes">
+        <app-round-checkbox [(ngModel)]="isParticipant">Я участник</app-round-checkbox>
+        <app-round-checkbox [(ngModel)]="inHeaders">В заголовках</app-round-checkbox>
+        <app-round-checkbox [(ngModel)]="strictSearch">Строгий поиск</app-round-checkbox>
+      </div>
+
+      <span class="sidebar__title">Только</span>
+
+      <div class="sidebar__checkboxes">
+        <app-round-checkbox [(ngModel)]="onlyTags">Теги</app-round-checkbox>
+        <app-round-checkbox [(ngModel)]="onlyRequests">Просьбы</app-round-checkbox>
+        <app-round-checkbox [(ngModel)]="onlyContacts">Контакты</app-round-checkbox>
+      </div>
+    </div>
+  </div>
+</div>

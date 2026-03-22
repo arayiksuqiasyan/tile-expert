@@ -1,0 +1,51 @@
+@use 'mixins' as *;
+
+:host {
+  display: inline-block;
+}
+
+.round-checkbox {
+  gap: 8px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  @include userSelectNone;
+  @include mobileTapColorNone;
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.round-checkbox__box {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  flex-shrink: 0;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  background-color: var(--round-checkbox-bg);
+
+  .round-checkbox--checked & {
+    background-color: color-mix(in srgb, var(--round-checkbox-active-icon-c) 30%, transparent);
+  }
+}
+
+.round-checkbox__icon {
+  width: 14px;
+  height: 12px;
+  transition: color 0.2s;
+  color: var(--round-checkbox-icon-c);
+
+  .round-checkbox--checked & {
+    color: var(--round-checkbox-active-icon-c);
+  }
+}
+
+.round-checkbox__label {
+  font-size: 14px;
+  color: var(--checkbox-txt-c);
+}

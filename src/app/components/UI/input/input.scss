@@ -1,0 +1,34 @@
+:host {
+  width: 100%;
+  height: 40px;
+  display: block;
+  border-radius: 6px;
+  --bg: var(--input-bgc);
+  --border:1px solid var(--checkbox-brc);
+}
+
+.input {
+  width: 100%;
+  outline: none;
+  font-size: 14px;
+  padding: 0 12px;
+  height: inherit;
+  border: var(--border);
+  border-radius: inherit;
+  background-color: var(--bg);
+  transition: border-color 0.2s;
+  color: var(--dropdown-options-c);
+
+  &::placeholder {
+    color: var(--input-placeholder-c);
+  }
+
+  &:focus {
+    border-color: var(--header-bgc);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
